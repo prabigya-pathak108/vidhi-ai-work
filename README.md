@@ -4,6 +4,15 @@
 
 Vidhi AI is a production-ready AI assistant that helps users understand Nepali laws by answering questions in English, Nepali, and Roman Nepali. It uses vector search to retrieve relevant legal documents and provides accurate, context-aware answers with source citations.
 
+## Workflow
+
+
+https://claude.ai/public/artifacts/a39c3aaa-bbfc-4a6c-b2bf-eef8a2c627a0
+
+*Click the above link to see how the ingestion and chat model works in flowchart.*
+
+Human in the loop for vector data ingestion is not compulsory but suggested for better accuracy and reliability.
+
 ---
 
 ## ✨ Features
