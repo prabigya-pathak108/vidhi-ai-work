@@ -34,11 +34,13 @@ Vidhi AI is a production-ready AI assistant that helps users understand Nepali l
 
 Used Factory method for all so switching is matters of second.
 
+*Change any of these in .env and every model for chat, embedding, vector storage, pdf parsing can be changed with ease*
+
 - **LLM Providers**: 
   - Groq (fast inference)
   - Google Gemini (multilingual support)
   - OpenAI, Anthropic (optional)
-- **Embeddings**: Pinecone `multilingual-e5-large` (1024 dimensions)
+- **Embeddings**: Pinecone `multilingual-e5-large` (1024 dimensions) default
 - **Orchestration**: LangChain
 - **PDF Parsing**: LLama Parse, Tesseract OCR
 
@@ -161,7 +163,7 @@ vidhi_ai/
 ### Step 1: Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/vidhi_ai.git
+git clone https://github.com/prabigya-pathak108/vidhi-ai-work
 cd vidhi_ai
 ```
 
@@ -179,7 +181,6 @@ PINECONE_INDEX_NAME=vidhi-ai-legal-index
 PINECONE_CLOUD=aws
 PINECONE_REGION=us-east-1
 
-# LLM Providers (At least one required)
 # Intent Detection LLM
 INTENT_LLM_PROVIDER=groq
 INTENT_LLM_MODEL=llama-3.3-70b-versatile
@@ -294,57 +295,6 @@ Open browser and navigate to: `http://localhost:8000`
 3. Ask legal questions in English, Nepali, or Roman Nepali
 4. View answers with source citations
 
-### API Usage Examples
-
-**1. Create User**
-
-```bash
-curl -X POST "http://localhost:8000/api/users/create?user_id=user123&name=John"
-```
-
-**2. Create Chat Session**
-
-```bash
-curl -X POST "http://localhost:8000/api/chat/session/user123"
-```
-
-Response:
-```json
-{
-  "session_id": "550e8400-e29b-41d4-a716-446655440000",
-  "user_id": "user123",
-  "created_at": "2026-01-05T14:30:00",
-  "message": "Session created successfully"
-}
-```
-
-**3. Send Message**
-
-```bash
-curl -X POST "http://localhost:8000/api/chat/message" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "session_id": "550e8400-e29b-41d4-a716-446655440000",
-    "content": "What is the property law in Nepal?"
-  }'
-```
-
-Response:
-```json
-{
-  "session_id": "550e8400-e29b-41d4-a716-446655440000",
-  "ai_response": "According to the Civil Code 2074...",
-  "sources": [
-    "📜 Civil Code 2074 | Chapter: 2 | Section: 45 | Relevance: 0.892\n📄 Content: ..."
-  ]
-}
-```
-
-**4. Get Conversation History**
-
-```bash
-curl "http://localhost:8000/api/chat/history/550e8400-e29b-41d4-a716-446655440000"
-```
 
 ---
 

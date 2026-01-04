@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vidhi AI | Legal Assistant</title>
+    <!-- Use leading slash for absolute paths -->
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="app-container">
+        <div id="setup-overlay" class="overlay">
+            <div class="setup-card">
+                <h2>Welcome to Vidhi AI</h2>
+                <p>Please enter your User ID to start or resume a session.</p>
+                <input type="text" id="userId" placeholder="Enter User ID (e.g., 1)" />
+                <button onclick="startChat()" class="btn-primary">
+                    Launch Chat <i data-lucide="arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <main id="chat-interface" class="chat-interface hidden">
+            <header class="chat-header">
+                <div class="user-info">
+                    <div class="avatar">AI</div>
+                    <div>
+                        <h3>Vidhi Assistant</h3>
+                        <span class="status">Online</span>
+                    </div>
+                </div>
+                <button onclick="location.reload()" class="btn-icon" title="New Session">
+                    <i data-lucide="refresh-cw"></i>
+                </button>
+            </header>
+
+            <div id="chat-box" class="chat-box">
+                <div class="message system">
+                    <div class="bubble">Hello! I am Vidhi AI. How can I assist you with legal questions today?</div>
+                </div>
+            </div>
+
+            <footer class="chat-input-area">
+                <div class="input-wrapper">
+                    <input type="text" id="userInput" placeholder="Ask a question..." onkeypress="handleKeyPress(event)">
+                    <button onclick="sendMessage()" id="sendBtn" class="btn-send">
+                        <i data-lucide="send"></i>
+                    </button>
+                </div>
+            </footer>
+        </main>
+
+        <!-- Sources Modal -->
+        <div id="sourcesModal" class="modal" onclick="closeModalOnOutsideClick(event)">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
+                        </svg>
+                        Sources
+                    </h2>
+                    <button class="modal-close" onclick="closeSourcesModal()">✕</button>
+                </div>
+                <div class="modal-body" id="modalSourcesList">
+                    <!-- Sources will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
